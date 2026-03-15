@@ -1,0 +1,253 @@
+:root{
+  --bg: #eef1f6;
+  --paper: #ffffff;
+  --ink: #121827;
+  --muted: #5b6476;
+  --line: #e6e8ef;
+
+  --accent: #1f7a8c;     
+  --accent2: #3aa6b9;
+  --shadow: 0 10px 30px rgba(16, 24, 40, .08);
+  --r: 16px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.cv{
+  width: min(1020px, calc(100% - 32px));
+  margin: 24px auto;
+}
+
+.hero{
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  align-items: center;
+
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: var(--r);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.hero__shape{
+  position:absolute;
+  right:-120px;
+  top:-140px;
+  width: 360px;
+  height: 360px;
+  background: rgba(255,255,255,.18);
+  transform: rotate(18deg);
+  border-radius: 60px;
+}
+
+.hero__photo img{
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,.35);
+  display:block;
+  background: #d9dde7;
+}
+
+.hero__text{
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+h1{
+  margin: 0 0 6px;
+  font-size: 34px;
+  letter-spacing: .2px;
+}
+
+.hero__role{
+  margin: 0 0 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: .95;
+}
+
+.hero__contact{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.chip{
+  display:inline-block;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.32);
+  background: rgba(255,255,255,.14);
+  color:#fff;
+  text-decoration:none;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.chip--muted{
+  cursor: default;
+}
+
+.hero__links{
+  display:flex;
+  gap: 14px;
+  flex-wrap:wrap;
+}
+
+.hero__links a{
+  color:#fff;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.35);
+}
+.hero__links a:hover{
+  border-bottom-color: rgba(255,255,255,.75);
+}
+
+.grid{
+  margin-top: 16px;
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.left{
+  display:flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.right{
+  display:flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel, .card{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  box-shadow: 0 1px 0 rgba(16,24,40,.04);
+}
+
+h2{
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+h3{
+  margin: 8px 0 2px;
+  font-size: 15px;
+}
+
+p{ margin: 8px 0; }
+
+ul, ol{
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+li{ margin: 8px 0; }
+
+.item{
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fbfcff;
+}
+
+.item__top{
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.badge{
+  display:inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31,122,140,.10);
+  border: 1px solid rgba(31,122,140,.18);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+.place{
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+.org{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.card--note .note{
+  margin: 6px 0 0;
+}
+
+.card--note a{
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.card--note a:hover{ text-decoration: underline; }
+
+.foot{
+  margin-top: 14px;
+  text-align:center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 920px){
+  .hero{
+    grid-template-columns: 1fr;
+  }
+
+  .hero__photo img{
+    width: 180px;
+    height: 180px;
+  }
+
+.grid{
+    grid-template-columns: 1fr;
+  }
+}
