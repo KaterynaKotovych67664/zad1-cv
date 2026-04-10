@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #fffafa;
   --paper: #ffffff;
   --ink: #2b0000;
@@ -201,4 +201,5 @@ h3 { margin: 15px 0 5px; font-size: 18px; color: var(--accent2); }
   .hero__text { order: 2; }
   .left, .right { order: unset; }
 }
+
 
