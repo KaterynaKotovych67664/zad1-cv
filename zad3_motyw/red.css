@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #fffafa;
   --paper: #ffffff;
   --ink: #2b0000;
@@ -40,7 +40,7 @@ body {
 }
 
 .hero__photo {
-  order: 2; /* Фото праворуч */
+  order: 2; 
   flex-shrink: 0;
 }
 
@@ -52,7 +52,7 @@ body {
 }
 
 .hero__text {
-  order: 1; /* Текст ліворуч */
+  order: 1; 
   max-width: 600px;
 }
 
@@ -96,12 +96,12 @@ h1 {
 .grid {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: 1fr 360px; /* Основна частина зліва, вузька справа */
+  grid-template-columns: 1fr 360px; 
   gap: 30px;
 }
 
-.left { order: 2; } /* Панель з навичками йде направо */
-.right { order: 1; } /* Основний текст йде наліво */
+.left { order: 2; } 
+.right { order: 1; } 
 
 .panel, .card {
   background: var(--paper);
@@ -137,7 +137,7 @@ h3 { margin: 15px 0 5px; font-size: 18px; color: var(--accent2); }
   font-weight: bold;
 }
 
-/* Кнопка повернена на місце */
+
 .theme-switcher {
   position: fixed;
   top: 20px;

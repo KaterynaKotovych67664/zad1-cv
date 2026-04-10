@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV – Kateryna Kotovych</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>CV – Kateryna Kotovych – Zadanie 8</title>
+  <link rel="stylesheet" href="green.css" id="theme-link" />
 </head>
 
 <body>
+  <button id="theme-toggle" class="theme-switcher">🌓 Zmień motyw</button>
   <div class="cv">
     <header class="hero">
       <div class="hero__photo">
-        <img src="photo.jpg" alt="Zdjęcie profilowe – Kateryna Kotovych" />
+        <img src="../photo.jpg" alt="Zdjęcie profilowe – Kateryna Kotovych" />
       </div>
 
       <div class="hero__text">
@@ -44,23 +45,17 @@
         </section>
 
         <section class="panel" id="umiejetnosci">
-          <h2>Umiejętności</h2>
-          <ul>
-            <li>Semantyczny HTML</li>
-            <li>Podstawy CSS (layout, responsywność)</li>
-            <li>Podstawy JavaScript</li>
-            <li>Git i GitHub (podstawowy workflow)</li>
-            <li>Dokładność i organizacja pracy</li>
-          </ul>
+          <div class="section-header">
+            <h2>Umiejętności</h2>
+            <button id="toggle-skills" class="toggle-btn" title="Schowaj/Pokaż sekcję" aria-expanded="true">▼</button>
+          </div>
+          <div id="skills-content" class="section-content">
+            <ul id="skills-list">
+              <li class="loading">Ładowanie umiejętności...</li>
+            </ul>
+          </div>
         </section>
 
-        <section class="panel" id="projekty">
-          <h2>Projekty</h2>
-          <ol>
-            <li>CV jako strona WWW</li>
-            <li>Strona MOJA BIBLIOTEKA</li>
-          </ol>
-        </section>
       </aside>
 
       <section class="right">
@@ -73,43 +68,80 @@
           </p>
         </section>
 
+        <section class="card" id="projekty">
+          <h2>Projekty</h2>
+          <ol id="projects-list">
+            <li class="loading">Ładowanie projektów...</li>
+          </ol>
+        </section>
+
         <section class="card" id="doswiadczenie">
           <h2>Doświadczenie</h2>
-
-          <article class="item">
-            <div class="item__top">
-              <span class="badge">01.2025 – obecnie</span>
-              <span class="place">Warszawa</span>
-            </div>
-            <h3>Projekty edukacyjne (self-learning)</h3>
-            <p class="org">Nauka własna</p>
-            <ul class="list">
-              <li>Tworzenie prostych stron w HTML i CSS</li>
-              <li>Ćwiczenie responsywności i układu strony</li>
-              <li>Publikacja projektu в repozytorium GitHub</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <div class="item__top">
-              <span class="badge">06.2024 – 12.2024</span>
-              <span class="place">Warszawa</span>
-            </div>
-            <h3>Wsparcie organizacyjne</h3>
-            <p class="org">Wolontariat (prace dorywcze)</p>
-            <ul class="list">
-              <li>Pomoc przy organizacji i komunikacji</li>
-              <li>Przygotowanie materiałów informacyjnych</li>
-              <li>Współpraca w zespole i terminowość</li>
-            </ul>
-          </article>
+          <div id="experience-list">
+            <p class="loading">Ładowanie doświadczenia...</p>
+          </div>
         </section>
+
+        <section class="card" id="notatki">
+          <h2>📝 Moje Notatki</h2>
+          <div class="notes-container">
+            <div class="note-input">
+              <input type="text" id="note-input" placeholder="Dodaj nową notatkę..." maxlength="100" />
+              <button id="add-note-btn" class="add-note-btn">Dodaj</button>
+            </div>
+            <ul id="notes-list" class="notes-list">
+              <li class="loading">Ładowanie notatek...</li>
+            </ul>
+            <button id="clear-notes-btn" class="clear-notes-btn">Wyczyść wszystkie notatki</button>
+          </div>
+        </section>
+
+        <section class="card" id="kontakt">
+          <h2>Skontaktuj się</h2>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="fname">Imię *</label>
+              <input type="text" id="fname" name="fname" required />
+              <span class="error" id="fname-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="lname">Nazwisko *</label>
+              <input type="text" id="lname" name="lname" required />
+              <span class="error" id="lname-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+              <span class="error" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Wiadomość *</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+              <span class="error" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Wyślij</button>
+            <div id="form-status" class="form-status"></div>
+            <div id="form-success" class="success-message"></div>
+            <div id="form-error" class="error-message"></div>
+          </form>
+        </section>
+
       </section>
     </main>
 
     <footer class="foot">
-      <p>© 2026 Kateryna Kotvych 67664</p>
+      <p>© 2026 Kateryna Kotvych 67664 – Zadanie 8: Backend</p>
     </footer>
   </div>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
