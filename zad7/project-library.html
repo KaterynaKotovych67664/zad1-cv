@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekt Moja Biblioteka</title>
+  <style>
+    :root { --bg: #f3f6f9; --surface: #ffffff; --text: #111827; --accent: #16a34a; --border: #d1d5db; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .topbar { background: var(--accent); color: white; padding: 1.5rem 2rem; }
+    .topbar h1 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.4rem); }
+    .container { width: min(1100px, 100%); margin: 0 auto; padding: 2rem; flex: 1; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 1.5rem; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08); }
+    .grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem; }
+    .form-group { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
+    label { font-weight: 600; }
+    input, textarea { width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: 14px; font: inherit; }
+    button { background: var(--accent); border: none; color: white; padding: 0.95rem 1.35rem; border-radius: 14px; cursor: pointer; font-weight: 700; }
+    button:hover { opacity: 0.95; }
+    .books-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+    .book-card { padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 18px; background: #f8fafc; }
+    .book-card h3 { margin: 0 0 0.35rem; }
+    .book-meta { margin: 0 0 0.8rem; color: var(--text); opacity: 0.8; }
+    .book-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .book-actions button { background: #dc2626; }
+    .info { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .info p { margin: 0; color: var(--text); opacity: 0.8; }
+    .footer { margin-top: 2rem; text-align: center; color: var(--text); opacity: 0.7; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="container">
+        <h1>Projekt Moja Biblioteka</h1>
+        <p>Interaktywny przykład prostej aplikacji do dodawania i usuwania książek.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="card grid">
+        <section>
+          <div class="info">
+            <p>Dodaj książkę do listy i zarządzaj kolekcją.</p>
+            <a href="index.html" style="color: var(--accent); text-decoration: none; font-weight: 700;">Powrót</a>
+          </div>
+
+          <form id="book-form">
+            <div class="form-group">
+              <label for="title">Tytuł</label>
+              <input type="text" id="title" name="title" placeholder="Wprowadź tytuł książki" required />
+            </div>
+            <div class="form-group">
+              <label for="author">Autor</label>
+              <input type="text" id="author" name="author" placeholder="Wprowadź autora" required />
+            </div>
+            <div class="form-group">
+              <label for="year">Rok wydania</label>
+              <input type="number" id="year" name="year" min="1900" max="2100" placeholder="2025" required />
+            </div>
+            <button type="submit">Dodaj książkę</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Lista książek</h2>
+          <ul id="books-list" class="books-list"></ul>
+          <p id="empty-state" style="margin-top:1rem; color: var(--text); opacity: 0.7;">Brak książek. Dodaj pierwszą pozycję, aby zobaczyć listę.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Samodzielna strona projektu biblioteki — nie wpływa na główne zadanie 6.</p>
+    </footer>
+  </div>
+
+  <script>
+    const booksList = document.getElementById('books-list');
+    const emptyState = document.getElementById('empty-state');
+    const bookForm = document.getElementById('book-form');
+
+    let books = JSON.parse(localStorage.getItem('libraryBooks') || '[]');
+
+    function renderBooks() {
+      booksList.innerHTML = '';
+      if (books.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      books.forEach((book, index) => {
+        const item = document.createElement('li');
+        item.className = 'book-card';
+        item.innerHTML = `
+          <h3>${book.title}</h3>
+          <p class="book-meta">Autor: ${book.author} • Rok: ${book.year}</p>
+          <div class="book-actions">
+            <button type="button" data-index="${index}">Usuń</button>
+          </div>
+        `;
+        booksList.appendChild(item);
+      });
+
+      document.querySelectorAll('[data-index]').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const index = Number(this.dataset.index);
+          books.splice(index, 1);
+          saveBooks();
+          renderBooks();
+        });
+      });
+    }
+
+    function saveBooks() {
+      localStorage.setItem('libraryBooks', JSON.stringify(books));
+    }
+
+    bookForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const title = document.getElementById('title').value.trim();
+      const author = document.getElementById('author').value.trim();
+      const year = document.getElementById('year').value.trim();
+      if (!title || !author || !year) return;
+
+      books.push({ title, author, year });
+      saveBooks();
+      renderBooks();
+      bookForm.reset();
+    });
+
+    renderBooks();
+  </script>
+</body>
+</html>
