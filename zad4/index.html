@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV – Kateryna Kotovych – Zadanie 4</title>
+  <link rel="stylesheet" href="green.css" id="theme-link" />
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-switcher">🌓 Zmień motyw</button>
+  <div class="cv">
+    <header class="hero">
+      <div class="hero__photo">
+        <img src="../photo.jpg" alt="Zdjęcie profilowe – Kateryna Kotovych" />
+      </div>
+
+      <div class="hero__text">
+        <h1>Kateryna Kotovych</h1>
+        <p class="hero__role">JUNIOR FRONT-END / STUDENTKA</p>
+
+        <div class="hero__contact">
+          <a class="chip" href="mailto:kkotovy1@stu.vistula.edu.pl">kkotovy1@stu.vistula.edu.pl</a>
+          <a class="chip" href="tel:+48500111222">+48 500 111 222</a>
+          <span class="chip chip--muted">Warszawa</span>
+        </div>
+
+        <div class="hero__links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="hero__shape" aria-hidden="true"></div>
+    </header>
+
+    <main class="grid">
+      <aside class="left">
+
+        <section class="panel" id="edukacja">
+          <h2>Edukacja</h2>
+          <p><strong>Uczelnia:</strong> Akademia Finansów i Biznesu Vistula</p>
+          <p><strong>Kierunek:</strong> Informatyka</p>
+          <p><strong>Okres:</strong> 2023 – obecnie</p>
+        </section>
+
+        <section class="panel" id="umiejetnosci">
+          <div class="section-header">
+            <h2>Umiejętności</h2>
+            <button id="toggle-skills" class="toggle-btn" title="Schowaj/Pokaż sekcję" aria-expanded="true">▼</button>
+          </div>
+          <div id="skills-content" class="section-content">
+            <ul>
+              <li>Semantyczny HTML</li>
+              <li>Podstawy CSS (layout, responsywność)</li>
+              <li>Podstawy JavaScript</li>
+              <li>Git i GitHub (podstawowy workflow)</li>
+              <li>Dokładność i organizacja pracy</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel" id="projekty">
+          <h2>Projekty</h2>
+          <ol>
+            <li>CV jako strona WWW</li>
+            <li>Strona MOJA BIBLIOTEKA</li>
+          </ol>
+        </section>
+      </aside>
+
+      <section class="right">
+        <section class="card" id="o-mnie">
+          <h2>O mnie</h2>
+          <p>
+            Jestem studentką, która rozwija umiejętności w kierunku front-end.
+            Lubię proste, czytelne interfejsy i uporządkowany kod.
+            Szukam pierwszych zadań i doświadczenia projektowego.
+          </p>
+        </section>
+
+        <section class="card" id="doswiadczenie">
+          <h2>Doświadczenie</h2>
+
+          <article class="item">
+            <div class="item__top">
+              <span class="badge">01.2025 – obecnie</span>
+              <span class="place">Warszawa</span>
+            </div>
+            <h3>Projekty edukacyjne (self-learning)</h3>
+            <p class="org">Nauka własna</p>
+            <ul class="list">
+              <li>Tworzenie prostych stron w HTML i CSS</li>
+              <li>Ćwiczenie responsywności i układu strony</li>
+              <li>Publikacja projektu в repozytorium GitHub</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item__top">
+              <span class="badge">06.2024 – 12.2024</span>
+              <span class="place">Warszawa</span>
+            </div>
+            <h3>Wsparcie organizacyjne</h3>
+            <p class="org">Wolontariat (prace dorywcze)</p>
+            <ul class="list">
+              <li>Pomoc przy organizacji i komunikacji</li>
+              <li>Przygotowanie materiałów informacyjnych</li>
+              <li>Współpraca w zespole i terminowość</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>© 2026 Kateryna Kotvych 67664 – Zadanie 4: Interakcja JavaScript</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
