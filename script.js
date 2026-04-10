@@ -127,7 +127,11 @@
 
     projects.forEach(project => {
       const li = document.createElement('li');
-      li.innerHTML = `<strong>${project.name}</strong> - ${project.description}`;
+      if (project.link) {
+        li.innerHTML = `<a href="${project.link}" target="_blank"><strong>${project.name}</strong></a> - ${project.description}`;
+      } else {
+        li.innerHTML = `<strong>${project.name}</strong> - ${project.description}`;
+      }
       projectsList.appendChild(li);
     });
 

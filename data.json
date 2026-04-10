@@ -10,13 +10,15 @@
   "projects": [
     {
       "id": 1,
-      "name": "CV jako strona WWW",
-      "description": "Projekt edukacyjny - osobista strona CV z HTML i CSS"
+      "name": "Kalkulator walut",
+      "description": "Interaktywny kalkulator walut z wyborem kursu",
+      "link": "zad6/project-currency.html"
     },
     {
       "id": 2,
-      "name": "Strona MOJA BIBLIOTEKA",
-      "description": "Projekt śledzenia kolekcji książek"
+      "name": "Moja Biblioteka",
+      "description": "Aplikacja do katalogowania książek",
+      "link": "zad6/project-library.html"
     }
   ],
   "experience": [
